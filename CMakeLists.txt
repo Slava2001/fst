@@ -25,7 +25,6 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
 endif()
 add_compile_options(
   -Wall
-  -Wextra
   -Wconversion
   -Wsign-conversion
   -Wshadow
@@ -34,6 +33,9 @@ add_compile_options(
   -Wdouble-promotion
   -Wformat=2
 )
+if(UNIX)
+  add_compile_options(-Wextra)
+endif()
 
 include_directories(include)
 set(SRC src/main.cpp)
