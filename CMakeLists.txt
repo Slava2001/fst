@@ -22,19 +22,18 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
   if(CLANG_TIDY_EXE)
     set(CMAKE_CXX_CLANG_TIDY ${CLANG_TIDY_EXE})
   endif()
-endif()
-add_compile_options(
-  -Wall
-  -Wconversion
-  -Wsign-conversion
-  -Wshadow
-  -Wduplicated-cond
-  -Wnull-dereference
-  -Wdouble-promotion
-  -Wformat=2
-)
-if(UNIX)
-  add_compile_options(-Wextra)
+
+  add_compile_options(
+    -Wall
+    -Wextra
+    -Wconversion
+    -Wsign-conversion
+    -Wshadow
+    -Wduplicated-cond
+    -Wnull-dereference
+    -Wdouble-promotion
+    -Wformat=2
+  )
 endif()
 
 include_directories(include)
