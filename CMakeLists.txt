@@ -36,13 +36,20 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
   )
 endif()
 
+FetchContent_Declare(
+  json
+  URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz
+)
+FetchContent_MakeAvailable(json)
+
 include_directories(include)
 set(SRC src/main.cpp)
 
 add_executable(${PROJECT_NAME} ${SRC})
+target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
 
 add_executable(hello_test tests/test.cpp)
-target_link_libraries(hello_test GTest::gtest_main)
+target_link_libraries(hello_test PRIVATE GTest::gtest_main)
 
 include(GoogleTest)
 gtest_discover_tests(hello_test)
