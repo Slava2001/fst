@@ -47,6 +47,7 @@ set(SRC
     src/main.cpp
     src/logger.cpp
     src/word_iter.cpp
+    src/inverted_index.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SRC})
