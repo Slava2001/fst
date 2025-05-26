@@ -12,7 +12,7 @@ void Logger::init() {
 std::ostream &operator<<(std::ostream &os, const LogLevel &lvl) {
     switch (lvl) {
         case LogLevel::Debug:
-            os << LOG_BG_GREEN << "DEBUG";
+            os << LOG_COLOR_GREEN << "DEBUG";
             break;
         case LogLevel::Info:
             os << LOG_COLOR_BLUE << "INFO";
@@ -21,10 +21,10 @@ std::ostream &operator<<(std::ostream &os, const LogLevel &lvl) {
             os << LOG_COLOR_YELLOW << "WARN";
             break;
         case LogLevel::Error:
-            os << LOG_COLOR_REG << "ERROR";
+            os << LOG_COLOR_RED << "ERROR";
             break;
         case LogLevel::Fatal:
-            os << LOG_BG_COLOR_REG << "FATAL";
+            os << LOG_BG_COLOR_RED << "FATAL";
             break;
     };
     return (os << LOG_COLOR_CLEAR);
