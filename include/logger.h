@@ -4,8 +4,11 @@
 #include <ctime>
 #include <iostream>
 #include <sstream>
+#include <memory>
+#include <stdexcept>
 
 enum class LogLevel { Debug, Info, Warn, Error, Fatal };
+std::ostream &operator<<(std::ostream &os, const LogLevel &lvl);
 
 #ifndef LOG_LVL
 #define LOG_LVL LogLevel::Info
@@ -30,17 +33,6 @@ static const LogLevel __LOG_LVL = LOG_LVL;
 #define LOG_COLOR_CLEAR "\033[0m"
 #endif
 
-std::ostream &operator<<(std::ostream &os, const LogLevel &lvl) {
-    const char *str[][2] = {
-        [(size_t)LogLevel::Debug] = {LOG_BG_GREEN, "DEBUG"},
-        [(size_t)LogLevel::Info] = {LOG_COLOR_BLUE, "INFO"},
-        [(size_t)LogLevel::Warn] = {LOG_COLOR_YELLOW, "WARN"},
-        [(size_t)LogLevel::Error] = {LOG_COLOR_REG, "ERROR"},
-        [(size_t)LogLevel::Fatal] = {LOG_BG_COLOR_REG, "FATAL"},
-    };
-    return (os << str[(size_t)lvl][0] << str[(size_t)lvl][1] << LOG_COLOR_CLEAR);
-}
-
 #define log_lvl(lvl, ...) \
     Logger::log(__LOG_LVL, lvl, __FILE__, __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
 #define log_debug(...) log_lvl(LogLevel::Debug, ##__VA_ARGS__)
@@ -51,11 +43,20 @@ std::ostream &operator<<(std::ostream &os, const LogLevel &lvl) {
 
 #define log_enter() log_debug("Enter")
 
+/// @brief Singleton logger class for logging messages with different log levels.
 class Logger {
    public:
+    /// @brief  Initializes the logger instance. Should be called only once.
+    static void init();
+
+    /// Logs a message with the specified log level, file, line, and function.
     template <typename... Args>
     static void log(LogLevel min_log_lvl, LogLevel log_lvl, const char *file, size_t line,
                     const char *func, const Args &...args) {
+        if (!_inst) {
+            return;  // Logger not initialized
+        }
+
         if (log_lvl < min_log_lvl) {
             return;
         }
@@ -66,6 +67,9 @@ class Logger {
         (msg << ... << args) << std::endl;
         std::cerr << msg.str();
     }
+
+   private:
+    static std::unique_ptr<Logger> _inst;
 };
 
 #endif  // INCLUDE_LOGGER_H

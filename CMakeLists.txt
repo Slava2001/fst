@@ -43,7 +43,10 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(json)
 
 include_directories(include)
-set(SRC src/main.cpp)
+set(SRC
+    src/main.cpp
+    src/logger.cpp
+)
 
 add_executable(${PROJECT_NAME} ${SRC})
 target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)

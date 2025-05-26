@@ -5,6 +5,7 @@
 #include "nlohmann/json.hpp"
 
 int main(int /*unused*/, char** /*unused*/) {
+    Logger::init();
     log_enter();
     log_info("Starting the FST...");
 

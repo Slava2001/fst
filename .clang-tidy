@@ -1,3 +1,8 @@
-Checks: 'clang-analyzer-*,bugprone-*,perfornamce-*,readability-*'
+Checks: >
+    clang-analyzer-*
+    bugprone-*
+    perfornamce-*
+    readability-*'
+    -readability-identifier-length
 WarningsAsErrors: '*'
 FormatStyle: file
