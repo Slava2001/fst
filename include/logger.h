@@ -3,8 +3,8 @@
 
 #include <ctime>
 #include <iostream>
-#include <sstream>
 #include <memory>
+#include <sstream>
 #include <stdexcept>
 
 enum class LogLevel { Debug, Info, Warn, Error, Fatal };
