@@ -46,6 +46,7 @@ include_directories(include)
 set(SRC
     src/main.cpp
     src/logger.cpp
+    src/word_iter.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SRC})
