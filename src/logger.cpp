@@ -1,4 +1,4 @@
-#include "Logger.h"
+#include "logger.h"
 
 std::unique_ptr<Logger> Logger::_inst = nullptr;
 
