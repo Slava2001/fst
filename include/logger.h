@@ -1,6 +1,7 @@
 #ifndef INCLUDE_LOGGER_H
 #define INCLUDE_LOGGER_H
 
+#include <cstring>
 #include <ctime>
 #include <iostream>
 #include <memory>
@@ -34,16 +35,15 @@ static const LogLevel __LOG_LVL = LOG_LVL;
 #define LOG_COLOR_CLEAR "\033[0m"
 #endif
 
-#if defined(__GNUC__) || defined(__clang__)
-#define __FUNC_NAME__ __PRETTY_FUNCTION__
-#elif defined(_MSC_VER)
-#define __FUNC_NAME__ __FUNCSIG__
+#ifdef PROJECT_ROOT
+#define PATH_TO_FILE \
+    (std::strstr(__FILE__, PROJECT_ROOT) ? (&__FILE__[sizeof(PROJECT_ROOT) - 1]) : __FILE__)
 #else
-#define __FUNC_NAME__ __func__
+#define PATH_TO_FILE __FILE__
 #endif
 
 #define log_lvl(lvl, ...) \
-    Logger::log(__LOG_LVL, lvl, __FILE__, __LINE__, __FUNC_NAME__, ##__VA_ARGS__)
+    Logger::log(__LOG_LVL, lvl, PATH_TO_FILE, __LINE__, __func__, ##__VA_ARGS__)
 #define log_debug(...) log_lvl(LogLevel::Debug, ##__VA_ARGS__)
 #define log_info(...) log_lvl(LogLevel::Info, ##__VA_ARGS__)
 #define log_warn(...) log_lvl(LogLevel::Warn, ##__VA_ARGS__)
