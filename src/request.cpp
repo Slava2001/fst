@@ -11,6 +11,4 @@ Request Request::LoadFile(const char* path) {
     return nlohmann::json::parse(file);
 }
 
-void from_json(const nlohmann::json& j, Request& c) {
-    j.at("requests").get_to(c.requests);
-}
+void from_json(const nlohmann::json& j, Request& c) { j.at("requests").get_to(c.requests); }
