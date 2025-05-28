@@ -80,10 +80,7 @@ TEST(WordIterTest, ArrowOperator) {
 }
 
 TEST(WordIterTest, BadStream) {
-    struct BadSteam: public std::istream {
-        BadSteam() = default;
-    };
-    BadSteam bad_stream;
+    std::istream bad_stream = std::istream(nullptr);
     Words words_iter(bad_stream);
     EXPECT_THROW(words_iter.begin(), std::ios_base::failure);
 }
