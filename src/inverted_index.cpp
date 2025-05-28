@@ -12,7 +12,7 @@ bool Entry::operator==(const Entry& other) const {
 
 bool Entry::operator!=(const Entry& other) const { return !(*this == other); }
 
-void InvertedIndex::UpdateDocumentBase(DocId doc, const std::map<std::string, size_t>& words) {
+void InvertedIndex::UpdateDocumentBase(DocId doc, std::map<std::string, size_t> words) {
     log_enter();
     log_debug("Update base for doc id: ", doc);
     for (auto& [word, count] : words) {
@@ -26,11 +26,22 @@ void InvertedIndex::UpdateDocumentBase(DocId doc, const std::map<std::string, si
             freqs.emplace_back(doc, count);
         }
     }
+    if (!_docs.insert_or_assign(doc, std::move(words)).second) {
+        log_warn("Document '", doc, "' overriden!");
+    };
 }
 
 std::vector<Entry> InvertedIndex::GetWordCount(const std::string& word) const {
     auto it = _freq_dictionary.find(word);
     if (it != _freq_dictionary.end()) {
+        return it->second;
+    }
+    return {};
+}
+
+std::map<std::string, size_t> InvertedIndex::GetDocWords(DocId id) const {
+    auto it = _docs.find(id);
+    if (it != _docs.end()) {
         return it->second;
     }
     return {};

@@ -38,3 +38,20 @@ TEST(InvertedIndex, GetWordCount) {
     ASSERT_EQ(ii.GetWordCount("world").size(), 1);
     ASSERT_EQ(ii.GetWordCount("world")[0], Entry(0, 20));
 }
+
+TEST(InvertedIndex, GetDocWords) {
+    InvertedIndex ii;
+    ii.UpdateDocumentBase(0, {{"hello", 10}, {"world", 20}});
+    ASSERT_EQ(ii.GetDocWords(0).size(), 2);
+    ASSERT_EQ(ii.GetDocWords(0).at("hello"), 10);
+    ASSERT_EQ(ii.GetDocWords(0).at("world"), 20);
+}
+
+TEST(InvertedIndex, Override) {
+    InvertedIndex ii;
+    ii.UpdateDocumentBase(0, {{"hello", 10}, {"world", 20}});
+    ii.UpdateDocumentBase(0, {{"hello", 1}, {"world", 2}});
+    ASSERT_EQ(ii.GetDocWords(0).size(), 2);
+    ASSERT_EQ(ii.GetDocWords(0).at("hello"), 1);
+    ASSERT_EQ(ii.GetDocWords(0).at("world"), 2);
+}

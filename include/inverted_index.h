@@ -34,15 +34,17 @@ class InvertedIndex {
     /// @param doc The document index to update.
     /// @param words A map containing unique words and their counts in the documents.
     /// @note This method will replace the existing document at the specified index.
-    void UpdateDocumentBase(DocId doc, const std::map<std::string, size_t>& words);
+    void UpdateDocumentBase(DocId doc, std::map<std::string, size_t> words);
 
     /// @brief Get word count for a specific word in each document.
     /// @param word The word to search for in the documents.
     /// @return A vector of Entry objects containing the document ID and count of the word in each
     /// document.
     std::vector<Entry> GetWordCount(const std::string& word) const;
+    std::map<std::string, size_t> GetDocWords(DocId id) const;
 
    private:
+    std::map<DocId, std::map<std::string, size_t>> _docs;
     std::map<std::string, std::vector<Entry>> _freq_dictionary;
     TEST_FRIENDS;
 };

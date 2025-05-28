@@ -4,6 +4,9 @@
 
 Config Config::LoadFile(const char* path) {
     std::ifstream file(path);
+    if (!file.is_open()) {
+        throw std::runtime_error("Failed to open config file: " + std::string(path));
+    }
     return nlohmann::json::parse(file);
 }
 

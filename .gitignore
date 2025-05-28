@@ -1,3 +1,8 @@
 /build
 /winbuild
 .vscode
+/test_files
+answers.json
+config.json
+request.json
+
