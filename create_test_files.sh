@@ -2,7 +2,7 @@
 
 # time grep -l "world" ./test_files/*
 
-set -eo pipefail
+set -euo pipefail
 
 OUTPUT_DIR="./test_files"
 WORDS_PER_FILE=1000
@@ -12,16 +12,27 @@ OUTPUT_REQUEST_FILE="request.json"
 REQUEST_COUNT=1000
 WORDS_PER_REQUEST=3
 
+trap_error() {
+    local exit_code=$?
+    local line_no=${BASH_LINENO[0]}
+    local cmd="${BASH_COMMAND}"
+    echo "ERROR $line_no: $cmd"
+    echo "RC: $exit_code"
+    exit $exit_code
+}
+trap trap_error ERR
+
 get_random_words() {
     words_count=$1
     # echo -n "random word"
     # curl -s https://random-word-api.herokuapp.com/word?number=${words_count}&length=10
     grep -E "^\w{10}$" /usr/share/dict/words \
-        | head -n 1000 \
-        | shuf -rn $words_count \
-        | tr '\n' ' '
+          | head -n 1000 \
+          | shuf -rn $words_count \
+          | tr '\n' ' ' || true
 }
 
+rm -rf "${OUTPUT_DIR}" "${OUTPUT_CONFIG_FILE}" "${OUTPUT_REQUEST_FILE}"
 mkdir -p "${OUTPUT_DIR}"
 for ((i=0; i < FILES_COUNT; i++)); do
     file_name="${OUTPUT_DIR}/file$(printf "%03d" "$i").txt"

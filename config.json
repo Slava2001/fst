@@ -1,0 +1,29 @@
+{
+    "config": {
+        "name": "fst",
+        "version": "0.1.5",
+        "max_responses": 5
+    },
+    "files": [
+        "./include/answers.h",
+        "./include/config.h",
+        "./include/inverted_index.h",
+        "./include/logger.h",
+        "./include/request.h",
+        "./include/search_server.h",
+        "./include/types.h",
+        "./include/word_iter.h",
+        "./src/main.cpp",
+        "./src/logger.cpp",
+        "./src/word_iter.cpp",
+        "./src/config.cpp",
+        "./src/inverted_index.cpp",
+        "./src/search_server.cpp",
+        "./src/answers.cpp",
+        "./src/request.cpp",
+        "./tests/test_word_iter.cpp",
+        "./tests/test_inverted_index.cpp",
+        "./tests/test_search_server.cpp",
+        "./tests/test_answers.cpp"
+    ]
+}
