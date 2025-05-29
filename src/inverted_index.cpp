@@ -1,8 +1,12 @@
 #include "inverted_index.h"
 
 #include <algorithm>
+
+#include "BS_thread_pool.hpp"
+
 // #define LOG_LVL LogLevel::Debug
 #include "logger.h"
+#include "word_iter.h"
 
 Entry::Entry(DocId id, size_t cnt) : doc_id(id), count(cnt) {}
 
@@ -11,6 +15,35 @@ bool Entry::operator==(const Entry& other) const {
 }
 
 bool Entry::operator!=(const Entry& other) const { return !(*this == other); }
+
+std::map<std::string, size_t> handle_file(const char* path) {
+    std::ifstream file(path);
+    if (!file.is_open()) {
+        log_fatal("Failed to open file: ", path);
+        throw std::runtime_error("File not found");
+    }
+    Words words(file);
+    std::map<std::string, size_t> word_count;
+    for (const auto& word : words) {
+        ++word_count[word];
+    }
+    return word_count;
+}
+
+InvertedIndex InvertedIndex::FromFiles(const std::vector<std::string>& files) {
+    log_enter();
+    BS::thread_pool pool;
+    log_info("Using ", pool.get_thread_count(), " threads for processing files...");
+    std::vector<std::future<std::map<std::string, size_t>>> futures;
+    for (const auto& file : files) {
+        futures.push_back(pool.submit_task([&] { return handle_file(file.c_str()); }));
+    }
+    InvertedIndex ii;
+    for (size_t i = 0; i < futures.size(); ++i) {
+        ii.UpdateDocumentBase(i, futures[i].get());
+    }
+    return ii;
+}
 
 void InvertedIndex::UpdateDocumentBase(DocId doc, std::map<std::string, size_t> words) {
     log_enter();

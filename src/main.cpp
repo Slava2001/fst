@@ -2,18 +2,12 @@
 #include <sstream>
 #include <string>
 
-#include "BS_thread_pool.hpp"
-#include "nlohmann/json.hpp"
-
 // #define LOG_LVL LogLevel::Debug
 #include "config.h"
 #include "inverted_index.h"
 #include "logger.h"
 #include "request.h"
 #include "search_server.h"
-#include "word_iter.h"
-
-InvertedIndex create_index(std::vector<std::string> files);
 
 int main(int /*unused*/, char** /*unused*/) {
     Logger::init();
@@ -24,7 +18,7 @@ int main(int /*unused*/, char** /*unused*/) {
     log_info("Config loaded: name: ", cfg.name, " v", cfg.version);
 
     log_info("Creating inverted index for ", cfg.files.size(), " files...");
-    InvertedIndex ii = create_index(cfg.files);
+    InvertedIndex ii = InvertedIndex::FromFiles(cfg.files);
     log_info("Inverted index created successfully.");
 
     SearchServer server(ii);
@@ -47,30 +41,3 @@ int main(int /*unused*/, char** /*unused*/) {
     return EXIT_SUCCESS;
 }
 
-std::map<std::string, size_t> handle_file(const char* path) {
-    std::ifstream file(path);
-    if (!file.is_open()) {
-        log_fatal("Failed to open file: ", path);
-        throw std::runtime_error("File not found");
-    }
-    Words words(file);
-    std::map<std::string, size_t> word_count;
-    for (const auto& word : words) {
-        ++word_count[word];
-    }
-    return word_count;
-}
-
-InvertedIndex create_index(std::vector<std::string> files) {
-    BS::thread_pool pool;
-    log_info("Using ", pool.get_thread_count(), " threads for processing files...");
-    std::vector<std::future<std::map<std::string, size_t>>> futures;
-    for (const auto& file : files) {
-        futures.push_back(pool.submit_task([&] { return handle_file(file.c_str()); }));
-    }
-    InvertedIndex ii;
-    for (size_t i = 0; i < futures.size(); ++i) {
-        ii.UpdateDocumentBase(i, futures[i].get());
-    }
-    return ii;
-}

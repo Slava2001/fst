@@ -76,10 +76,10 @@ set(FST_LIB_SRC
 )
 add_library(FST_LIB STATIC ${FST_LIB_SRC})
 target_link_libraries(FST_LIB nlohmann_json::nlohmann_json)
+target_include_directories(FST_LIB PRIVATE ${bs_thread_pool_SOURCE_DIR}/include)
 
 add_executable(${PROJECT_NAME} src/main.cpp ${LIB_SRC})
 target_link_libraries(${PROJECT_NAME} FST_LIB)
-target_include_directories(${PROJECT_NAME} PRIVATE ${bs_thread_pool_SOURCE_DIR}/include)
 
 enable_testing()
 include(GoogleTest)

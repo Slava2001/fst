@@ -30,6 +30,11 @@ class InvertedIndex {
     /// @brief Default constructor for InvertedIndex.
     InvertedIndex() = default;
 
+    /// @brief Constructs an InvertedIndex from files.
+    /// @param files A vector of file paths to read documents from.
+    /// @return An InvertedIndex object populated with documents from the specified files.
+    static InvertedIndex FromFiles(const std::vector<std::string>& files);
+
     /// @brief Updates the document base with a new set of documents.
     /// @param doc The document index to update.
     /// @param words A map containing unique words and their counts in the documents.
