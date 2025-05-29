@@ -2,6 +2,6 @@
     "requests": [
         "class int include",
         "log map json",
-        "string isalpha empty"
+        "string empty"
     ]
 }

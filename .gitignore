@@ -1,6 +1,7 @@
+.vscode
 /build
 /winbuild
-.vscode
+/win_build
+/coverage_build
 /test_files
 answers.json
-/coverage_build
