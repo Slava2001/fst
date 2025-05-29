@@ -40,4 +40,3 @@ int main(int /*unused*/, char** /*unused*/) {
     log_info("Answers saved successfully.");
     return EXIT_SUCCESS;
 }
-
