@@ -1,7 +1,7 @@
 <svg width="390" height="120" xmlns="http://www.w3.org/2000/svg">
  <g>
   <title>Layer 1</title>
-  <path id="svg_7" d="m433.50044,368.66699" opacity="NaN" stroke-width="0" stroke="#000" fill="#000000"/>
+  <path id="svg_7" d="m433.50044,368.66699" opacity="NaN" stroke-width="0" stroke="#000" fill="currentColor"/>
   <g id="svg_11">
    <g stroke="null">
     <g stroke="null">
@@ -12,10 +12,10 @@
     </g>
    </g>
    <g stroke="null" id="svg_9">
-    <text transform="matrix(1.15451 0 0 1.15451 -24.9539 -24.0509)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="50" id="svg_6" y="69.78662" x="129.16346" stroke-width="0" fill="#000000">File Search</text>
-    <text transform="matrix(1.15451 0 0 1.15451 -24.9539 -24.0509)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="50" id="svg_8" y="111.78662" x="195.16346" stroke-width="0" fill="#000000">Tool</text>
+    <text transform="matrix(1.15451 0 0 1.15451 -24.9539 -24.0509)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="50" id="svg_6" y="69.78662" x="129.16346" stroke-width="0" fill="currentColor">File Search</text>
+    <text transform="matrix(1.15451 0 0 1.15451 -24.9539 -24.0509)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="50" id="svg_8" y="111.78662" x="195.16346" stroke-width="0" fill="currentColor">Tool</text>
    </g>
-   <text xml:space="preserve" text-anchor="start" font-family="'Sansita Swashed'" font-size="50" id="svg_10" y="60.89516" x="63.25734" stroke-width="0" stroke="#000" fill="#000000">f</text>
+   <text xml:space="preserve" text-anchor="start" font-family="'Noto Sans JP'" font-size="50" id="svg_10" y="65.89516" x="63.25734" stroke-width="0" stroke="#000" fill="currentColor">f</text>
   </g>
  </g>
 

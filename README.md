@@ -1,5 +1,3 @@
-# FST - file searching tool
-
 <img src="./logo.svg"></img>
 
 ![build_linux](https://github.com/Slava2001/fst/actions/workflows/build_linux.yml/badge.svg)
