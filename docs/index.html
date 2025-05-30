@@ -71,6 +71,7 @@ $(function() {
 <p align="center"></p>
 <p><a href="https://github.com/Slava2001/fst/actions/workflows/build_linux.yml"><img src="https://github.com/Slava2001/fst/actions/workflows/build_linux.yml/badge.svg" alt="Linux" style="pointer-events: none;" class="inline"/> </a> <a href="https://github.com/Slava2001/fst/actions/workflows/build_windows.yml"><img src="https://github.com/Slava2001/fst/actions/workflows/build_windows.yml/badge.svg" alt="Windows" style="pointer-events: none;" class="inline"/> </a> </p>
 <hr  />
+<p>Утилита <code>fst</code> предназначена для быстрого поиска информации в любом наборе текстовых файлов. Она индексирует файлы, указанные в конфигурационном файле <code>config.json</code>, и затем обрабатывает запросы из <code>request.json</code>, формируя результаты в <code>answers.json</code>. По каждому запросу утилита находит наиболее релевантные файлы (в пределах заданного лимита) и сортирует их по специальному рангу. Используется оптимизированный алгоритм поиска, обеспечивающий высокую скорость обработки даже больших объёмов данных. Утилита запускается без аргументов — достаточно разместить все необходимые файлы в одной директории с исполняемым файлом.</p>
 <h2><a class="anchor" id="autotoc_md1"></a>
 Стек используемых технологий:</h2>
 <ul>
@@ -83,7 +84,7 @@ $(function() {
 <li>Библиотеки:<ul>
 <li><a href="https://github.com/google/googletest">Google Test</a> – для написания юнит тестов</li>
 <li><a href="https://github.com/bshoshany/thread-pool">thread-pool</a> – для реализации многопоточного индексирования файлов</li>
-<li><a href="https://github.com/nlohmann/json/">nlohmann/json</a> – для работы в json-файлами</li>
+<li><a href="https://github.com/nlohmann/json/">nlohmann/json</a> – для работы c json-файлами</li>
 </ul>
 </li>
 <li>Документация: Doxygen</li>
@@ -116,9 +117,9 @@ Linux</h3>
 Windows</h3>
 <h4><a class="anchor" id="autotoc_md6"></a>
 MinGW</h4>
-<div class="fragment"><div class="line">cmake -G &quot;MinGW Makefiles&quot; -S . -B .\build</div>
-<div class="line">cmake --build .\build</div>
-<div class="line">.\build\fst</div>
+<div class="fragment"><div class="line">cmake -G &quot;MinGW Makefiles&quot; -S . -B .\win_build</div>
+<div class="line">cmake --build .\win_build</div>
+<div class="line">.\win_build\fst</div>
 </div><!-- fragment --><h4><a class="anchor" id="autotoc_md7"></a>
 Developer Command Prompt for VS</h4>
 <p>Запустите Developer Command Prompt for VS, перейдите в корень репозитория и выполните:</p>
@@ -127,7 +128,8 @@ Developer Command Prompt for VS</h4>
 <div class="line">.\win_build\Debug\fst.exe</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
 Структура проекта</h2>
-<p>Подробное описание всех классов, структур и функций, а также графы их взаимодействия можно найти в документации. Для этого откройте файл <code>./docs/index.html</code> любым браузером, например, <code>firefox</code>:</p>
+<p>Подробное описание всех классов, структур и функций, а также графы их взаимодействия можно найти в <a href="https://slava2001.github.io/fst/index.html">документации</a>.</p>
+<p>Также документация доступна офлайн, для этого откройте файл <code>./docs/index.html</code> любым браузером, например, <code>firefox</code>:</p>
 <div class="fragment"><div class="line">firefox ./docs/index.html</div>
 </div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
