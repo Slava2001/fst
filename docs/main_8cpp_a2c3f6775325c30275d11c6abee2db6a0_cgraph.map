@@ -1,0 +1,13 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title=" " alt="" coords="5,132,60,159"/>
+<area shape="rect" id="node2" href="$classInvertedIndex.html#a8c538e98afd306761131df3d3b3626d1" title="Constructs an InvertedIndex from files." alt="" coords="108,5,291,32"/>
+<area shape="rect" id="node4" href="$classLogger.html#ad9f38f9cc2d75a6207f4972427aa74f1" title="Initializes the logger instance. Should be called only once." alt="" coords="152,56,247,83"/>
+<area shape="rect" id="node5" href="$structConfig.html#abbff0b5d174a69d3b7e1609ee8852146" title="Loads the configuration from a JSON file." alt="" coords="137,107,262,133"/>
+<area shape="rect" id="node6" href="$structRequest.html#ad6a41192770bb29fb2a7dedbcba515f3" title="Loads a request from a JSON file." alt="" coords="131,157,268,184"/>
+<area shape="rect" id="node7" href="$structAnswers.html#a634691783f6d744de6a8622088da51a8" title="Saves the answers to a file in JSON format." alt="" coords="129,208,269,235"/>
+<area shape="rect" id="node8" href="$classSearchServer.html#abce47d862027b7cee1e4d042dcaba7e3" title="Searches for documents based on the provided queries." alt="" coords="119,259,279,285"/>
+<area shape="rect" id="node3" href="$classInvertedIndex.html#ac65ae1d16ccef5926df82cd2369a7f55" title="Updates the document base with a new set of documents." alt="" coords="339,5,605,32"/>
+<area shape="rect" id="node9" href="$classSearchServer.html#a675c83e4f110cc06c367dc46bb281e34" title="Searches for documents based on a single query." alt="" coords="379,259,565,285"/>
+<area shape="rect" id="node10" href="$classInvertedIndex.html#a708b25bd6eeed6526aa38b84a0bfd283" title="Get the frequency dictionary for a specific document." alt="" coords="657,233,865,260"/>
+<area shape="rect" id="node11" href="$classInvertedIndex.html#a94fba58d4b472a9e1df59c833b5d3ee1" title="Get word count for a specific word in each document." alt="" coords="653,284,868,311"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="SearchServer::Search" name="SearchServer::Search">
+<area shape="rect" id="node1" title="Searches for documents based on the provided queries." alt="" coords="5,31,165,57"/>
+<area shape="rect" id="node2" href="$classSearchServer.html#a675c83e4f110cc06c367dc46bb281e34" title="Searches for documents based on a single query." alt="" coords="213,31,400,57"/>
+<area shape="rect" id="node3" href="$classInvertedIndex.html#a708b25bd6eeed6526aa38b84a0bfd283" title="Get the frequency dictionary for a specific document." alt="" coords="451,5,659,32"/>
+<area shape="rect" id="node4" href="$classInvertedIndex.html#a94fba58d4b472a9e1df59c833b5d3ee1" title="Get word count for a specific word in each document." alt="" coords="448,56,663,83"/>
+</map>
