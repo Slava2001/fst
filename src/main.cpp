@@ -9,7 +9,7 @@
 #include "request.h"
 #include "search_server.h"
 
-#define PATH_TO_CONFIG  "./config.json"
+#define PATH_TO_CONFIG "./config.json"
 #define PATH_TO_REQUEST "./request.json"
 #define PATH_TO_ANSWERS "./answers.json"
 

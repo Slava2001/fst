@@ -5,7 +5,8 @@
 #include "inverted_index.h"
 
 /**
- * @brief This class is responsible for searching documents based on queries using an inverted index.
+ * @brief This class is responsible for searching documents based on queries using an inverted
+ * index.
  */
 class SearchServer {
    public:

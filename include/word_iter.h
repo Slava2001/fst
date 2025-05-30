@@ -13,10 +13,10 @@
 class WordIterator {
    public:
     using iterator_category = std::input_iterator_tag;
-    using value_type        = std::string;
-    using difference_type   = std::ptrdiff_t;
-    using pointer           = const std::string*;
-    using reference         = const std::string&;
+    using value_type = std::string;
+    using difference_type = std::ptrdiff_t;
+    using pointer = const std::string*;
+    using reference = const std::string&;
     /**
      * @brief Default constructor for WordIterator, initializes the end state.
      */
