@@ -61,11 +61,75 @@ $(function() {
 </iframe>
 </div>
 
-<div class="header">
+<div class="PageDoc"><div class="header">
   <div class="headertitle">
 <div class="title">FST Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p align="center"><a class="anchor" id="md_README"></a> </p>
+<p><img src="./logo.svg" alt="" style="pointer-events: none;" class="inline"/> </p>
+<p align="center"></p>
+<p><a href="https://github.com/Slava2001/fst/actions/workflows/build_linux.yml"><img src="https://github.com/Slava2001/fst/actions/workflows/build_linux.yml/badge.svg" alt="Linux" style="pointer-events: none;" class="inline"/> </a> <a href="https://github.com/Slava2001/fst/actions/workflows/build_windows.yml"><img src="https://github.com/Slava2001/fst/actions/workflows/build_windows.yml/badge.svg" alt="Windows" style="pointer-events: none;" class="inline"/> </a> </p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md1"></a>
+Стек используемых технологий:</h2>
+<ul>
+<li>Язык программирования: C++, bash</li>
+<li>Компиляторы: GCC, Clang, MSVC++</li>
+<li>Инструменты для тестирования: Google Test</li>
+<li>Инструменты для сборки и автоматизации: CMake</li>
+<li>Инструменты для профилирования и анализа: Clang-tidy, lcov</li>
+<li>Операционные системы: Linux, Windows</li>
+<li>Библиотеки:<ul>
+<li><a href="https://github.com/google/googletest">Google Test</a> – для написания юнит тестов</li>
+<li><a href="https://github.com/bshoshany/thread-pool">thread-pool</a> – для реализации многопоточного индексирования файлов</li>
+<li><a href="https://github.com/nlohmann/json/">nlohmann/json</a> – для работы в json-файлами</li>
+</ul>
+</li>
+<li>Документация: Doxygen</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Сборка</h2>
+<h3><a class="anchor" id="autotoc_md3"></a>
+Linux</h3>
+<p>Убедитесь что установлены все необходимые инструменты:</p>
+<div class="fragment"><div class="line">sudo apt update</div>
+<div class="line">sudo apt install build-essential cmake gcc g++ clang lcov clang-tidy</div>
+</div><!-- fragment --><p>Выполните следующие команды для сборки:</p>
+<div class="fragment"><div class="line">cmake -S . -B ./build -DCMAKE_BUILD_TYPE=Release</div>
+<div class="line">cmake --build ./build</div>
+</div><!-- fragment --><p>Запустите FST следующей командой:</p>
+<div class="fragment"><div class="line">./build/fst</div>
+</div><!-- fragment --><p>После успешного завершения работы, проверьте появившийся файл <code>./answers.json</code>:</p>
+<div class="fragment"><div class="line">cat ./answers.json</div>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md4"></a>
+Тестирование и покрытие кода</h4>
+<p>Для запуска тестов выполните следующие команды:</p>
+<div class="fragment"><div class="line">cmake -S . -B ./coverage_build -DCODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug</div>
+<div class="line">cd ./coverage_build</div>
+<div class="line">cmake --build .</div>
+<div class="line">ctest</div>
+</div><!-- fragment --><p>Оставаясь в билд директории, выполните скрипт (может не работать, если вы используете WSL): </p><div class="fragment"><div class="line">../coverage.sh</div>
+</div><!-- fragment --><p>Отчет о покрытии появится в директории <code>./coverage_html</code>, используйте любой браузер для просмотра, например, <code>firefox</code>:</p>
+<div class="fragment"><div class="line">firefox ./coverage_html/index.html</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md5"></a>
+Windows</h3>
+<h4><a class="anchor" id="autotoc_md6"></a>
+MinGW</h4>
+<div class="fragment"><div class="line">cmake -G &quot;MinGW Makefiles&quot; -S . -B .\build</div>
+<div class="line">cmake --build .\build</div>
+<div class="line">.\build\fst</div>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md7"></a>
+Developer Command Prompt for VS</h4>
+<p>Запустите Developer Command Prompt for VS, перейдите в корень репозитория и выполните:</p>
+<div class="fragment"><div class="line">cmake -S . -B .\win_build</div>
+<div class="line">cmake --build .\win_build</div>
+<div class="line">.\win_build\Debug\fst.exe</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+Структура проекта</h2>
+<p>Подробное описание всех классов, структур и функций, а также графы их взаимодействия можно найти в документации. Для этого откройте файл <code>./docs/index.html</code> любым браузером, например, <code>firefox</code>:</p>
+<div class="fragment"><div class="line">firefox ./docs/index.html</div>
+</div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
