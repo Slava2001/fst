@@ -24,7 +24,7 @@
  - Библиотеки:
    - [Google Test](https://github.com/google/googletest) – для написания юнит тестов
    - [thread-pool](https://github.com/bshoshany/thread-pool) – для реализации многопоточного индексирования файлов
-   - [nlohmann/json](https://github.com/nlohmann/json/) – для работы в json-файлами
+   - [nlohmann/json](https://github.com/nlohmann/json/) – для работы c json-файлами
  - Документация: Doxygen
 
 ## Сборка
@@ -84,9 +84,9 @@ firefox ./coverage_html/index.html
 #### MinGW
 
 ```sh
-cmake -G "MinGW Makefiles" -S . -B .\build
-cmake --build .\build
-.\build\fst
+cmake -G "MinGW Makefiles" -S . -B .\win_build
+cmake --build .\win_build
+.\win_build\fst
 ```
 
 #### Developer Command Prompt for VS
@@ -103,7 +103,7 @@ cmake --build .\win_build
 
 Подробное описание всех классов, структур и функций, а также графы их взаимодействия можно найти в [документации](https://slava2001.github.io/fst/index.html).
 
-Также документация достапна офлайн, для этого откройте файл `./docs/index.html` любым браузером, например, `firefox`:
+Также документация доступна офлайн, для этого откройте файл `./docs/index.html` любым браузером, например, `firefox`:
 
 ```sh
 firefox ./docs/index.html
