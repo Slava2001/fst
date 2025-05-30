@@ -3,6 +3,16 @@
 ![build_linux](https://github.com/Slava2001/fst/actions/workflows/build_linux.yml/badge.svg)
 ![build_windows](https://github.com/Slava2001/fst/actions/workflows/build_windows.yml/badge.svg)
 
+<svg>
+    <style>
+        .letters { fill: #2E2E2E; }
+
+        @media (prefers-color-scheme: dark) {
+            .letters { fill: #ffffff; }
+        }
+    </style>
+    <text class="letters" xml:space="preserve" text-anchor="start" font-family="'Noto Sans JP'" font-size="50" id="svg_10" y="65.89516" x="63.25734" stroke-width="0" stroke="#000" fill="currentColor">f</text>
+</svg>
 
 ## Используемые библиотеки
 
