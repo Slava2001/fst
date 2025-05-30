@@ -6,9 +6,9 @@ WordIterator::WordIterator() : _stream(nullptr), _end_reached(true) {}
 
 WordIterator::WordIterator(std::istream& is) : _stream(&is), _end_reached(false) { ++(*this); }
 
-const std::string& WordIterator::operator*() const { return _current_word; }
+WordIterator::reference WordIterator::operator*() const { return _current_word; }
 
-const std::string* WordIterator::operator->() const { return &_current_word; }
+WordIterator::pointer WordIterator::operator->() const { return &_current_word; }
 
 WordIterator& WordIterator::operator++() {
     log_enter();

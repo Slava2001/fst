@@ -16,6 +16,11 @@ bool Entry::operator==(const Entry& other) const {
 
 bool Entry::operator!=(const Entry& other) const { return !(*this == other); }
 
+/**
+ * @brief Read file and count words.
+ * @param path Path to the file to read.
+ * @return A map where keys are unique words and values are their counts in the file.
+ */
 std::map<std::string, size_t> handle_file(const char* path) {
     std::ifstream file(path);
     if (!file.is_open()) {

@@ -60,7 +60,7 @@ TEST(SearchServer, TestSimple) {
     assert_results_eq(result, expected);
 }
 
-TEST(SearchServer, TestTop5) {
+TEST(SearchServer, TestTop2) {
     const std::vector<std::string> docs = {
         "london is the capital of great britain",
         "paris is the capital of france",
@@ -95,4 +95,11 @@ TEST(SearchServer, TestTop5) {
     SearchServer srv(idx);
     std::vector<std::vector<RelativeIndex>> result = srv.Search(request, 5);
     assert_results_eq(result, expected);
+}
+
+TEST(SearchServer, Empty) {
+    InvertedIndex idx;
+    SearchServer srv(idx);
+    std::vector<std::vector<RelativeIndex>> result = srv.Search({}, 5);
+    ASSERT_TRUE(result.empty());
 }

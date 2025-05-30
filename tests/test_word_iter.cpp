@@ -45,11 +45,9 @@ TEST(WordIterTest, RangeBasedForLoop) {
     std::istringstream stream("hello, world");
     Words words_iter(stream);
 
-    std::string sum;
-    for (const auto &w : words_iter) {
-        sum += w + "|";
-    }
-    EXPECT_EQ(sum, "hello|world|");
+    std::vector<std::string> result(words_iter.begin(), words_iter.end());
+    std::vector<std::string> expect = {"hello", "world"};
+    EXPECT_EQ(result, expect);
 }
 
 TEST(WordIterTest, ComplexStream) {
@@ -57,14 +55,11 @@ TEST(WordIterTest, ComplexStream) {
         "hello, world! hello snake_case, hello camelCase, hello PascalCase, hello kebab-case, "
         "hello UPPER_CASE");
     Words words_iter(stream);
-
-    std::string sum;
-    for (const auto &w : words_iter) {
-        sum += w + "|";
-    }
-    EXPECT_EQ(sum,
-              "hello|world|hello|snake|case|hello|camelCase|hello|PascalCase|hello|kebab|case|"
-              "hello|UPPER|CASE|");
+    std::vector<std::string> result(words_iter.begin(), words_iter.end());
+    std::vector<std::string> expect = {"hello", "world",     "hello", "snake",      "case",
+                                       "hello", "camelCase", "hello", "PascalCase", "hello",
+                                       "kebab", "case",      "hello", "UPPER",      "CASE"};
+    EXPECT_EQ(result, expect);
 }
 
 TEST(WordIterTest, DereferenceOperator) {

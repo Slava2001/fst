@@ -11,34 +11,48 @@
     </a>
 </p>
 
-## Используемые библиотеки
+---
+
+## Стек используемых технологий:
+
+ - Язык программирования: C++, bash
+ - Компиляторы: GCC, Clang, MSVC++
+ - Инструменты для тестирования: Google Test
+ - Инструменты для сборки и автоматизации: CMake
+ - Инструменты для профилирования и анализа: Clang-tidy, lcov
+ - Операционные системы: Linux, Windows
+ - Библиотеки:
+   - [Google Test](https://github.com/google/googletest) – для написания юнит тестов
+   - [thread-pool](https://github.com/bshoshany/thread-pool) – для реализации многопоточного индексирования файлов
+   - [nlohmann/json](https://github.com/nlohmann/json/) – для работы в json-файлами
+ - Документация: Doxygen
 
 ## Сборка
 ### Linux
 
 Убедитесь что установлены все необходимые инструменты:
 
-```
+```sh
 sudo apt update
 sudo apt install build-essential cmake gcc g++ clang lcov clang-tidy
 ```
 
 Выполните следующие команды для сборки:
 
-```
+```sh
 cmake -S . -B ./build -DCMAKE_BUILD_TYPE=Release
 cmake --build ./build
 ```
 
 Запустите FST следующей командой:
 
-```
+```sh
 ./build/fst
 ```
 
 После успешного завершения работы, проверьте появившийся файл `./answers.json`:
 
-```
+```sh
 cat ./answers.json
 ```
 
@@ -47,7 +61,7 @@ cat ./answers.json
 
 Для запуска тестов выполните следующие команды:
 
-```
+```sh
 cmake -S . -B ./coverage_build -DCODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug
 cd ./coverage_build
 cmake --build .
@@ -55,13 +69,13 @@ ctest
 ```
 
 Оставаясь в билд директории, выполните скрипт (может не работать, если вы используете WSL):
-```
+```sh
 ../coverage.sh
 ```
 
 Отчет о покрытии появится в директории `./coverage_html`, используйте любой браузер для просмотра, например, `firefox`:
 
-```
+```sh
 firefox ./coverage_html/index.html
 ```
 
@@ -69,7 +83,7 @@ firefox ./coverage_html/index.html
 
 #### MinGW
 
-```
+```sh
 cmake -G "MinGW Makefiles" -S . -B .\build
 cmake --build .\build
 .\build\fst
@@ -79,8 +93,16 @@ cmake --build .\build
 
 Запустите Developer Command Prompt for VS, перейдите в корень репозитория и выполните:
 
-```
+```sh
 cmake -S . -B .\win_build
 cmake --build .\win_build
 .\win_build\Debug\fst.exe
+```
+
+## Структура проекта
+
+Подробное описание всех классов, структур и функций, а также графы их взаимодействия можно найти в документации. Для этого откройте файл `./docs/index.html` любым браузером, например, `firefox`:
+
+```sh
+firefox ./docs/index.html
 ```

@@ -8,6 +8,9 @@
 #include <sstream>
 #include <stdexcept>
 
+/**
+ * Logging levels.
+ */
 enum class LogLevel { Debug, Info, Warn, Error, Fatal };
 std::ostream &operator<<(std::ostream &os, const LogLevel &lvl);
 
@@ -52,13 +55,19 @@ static const LogLevel __LOG_LVL = LOG_LVL;
 
 #define log_enter() log_debug("Enter")
 
-/// @brief Singleton logger class for logging messages with different log levels.
+/**
+ * @brief Singleton logger class for logging messages with different log levels.
+ */
 class Logger {
    public:
-    /// @brief  Initializes the logger instance. Should be called only once.
+    /**
+     * @brief Initializes the logger instance. Should be called only once.
+     */
     static void init();
 
-    /// Logs a message with the specified log level, file, line, and function.
+    /**
+     * @brief Logs a message with the specified log level, file, line, and function.
+     */
     template <typename... Args>
     static void log(LogLevel min_log_lvl, LogLevel log_lvl, const char *file, size_t line,
                     const char *func, const Args &...args) {
