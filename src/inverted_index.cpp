@@ -1,7 +1,7 @@
 #include "inverted_index.h"
 
 #include <algorithm>
-
+#include <thread>
 #include "BS_thread_pool.hpp"
 
 // #define LOG_LVL LogLevel::Debug
@@ -22,6 +22,7 @@ bool Entry::operator!=(const Entry& other) const { return !(*this == other); }
  * @return A map where keys are unique words and values are their counts in the file.
  */
 std::map<std::string, size_t> handle_file(const char* path) {
+    log_info("Indexing \"", path, "\" in thread: ", std::this_thread::get_id());
     std::ifstream file(path);
     if (!file.is_open()) {
         log_fatal("Failed to open file: ", path);
