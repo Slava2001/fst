@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <thread>
+
 #include "BS_thread_pool.hpp"
 
 // #define LOG_LVL LogLevel::Debug
